@@ -1,0 +1,70 @@
+@gun4_5_api_HostAddress = http://localhost:5084
+
+GET {{gun4_5_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+### Tüm Görevleri Getir
+GET {{gun4_5_api_HostAddress}}/api/todos
+
+### Yeni Görev Ekle
+POST {{gun4_5_api_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Süt al"
+}
+
+### 1 Numaralı Görevi Getir
+GET {{gun4_5_api_HostAddress}}/api/todos/1
+
+### Olmayan Görevi Getir
+GET {{gun4_5_api_HostAddress}}/api/todos/999
+
+### 1 Numaralı Görevi Tamamla
+PUT {{gun4_5_api_HostAddress}}/api/todos/1/complete
+
+### 1 Numaralı Görevi Sil
+DELETE {{gun4_5_api_HostAddress}}/api/todos/1
+
+### 1 Numaralı Görevi Tekrar Sil (Hata Testi)
+DELETE {{gun4_5_api_HostAddress}}/api/todos/1
+
+
+### 1. Doğrulama Testi: Boş metin
+POST {{gun4_5_api_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": ""
+}
+
+### 2. Doğrulama Testi: Boş obje
+POST {{gun4_5_api_HostAddress}}/api/todos
+Content-Type: application/json
+
+{}
+
+### 3. Doğrulama Testi: 150 Karakterlik Başlık
+POST {{gun4_5_api_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+}
+
+### 4. Doğrulama Testi: Sayısal Başlık
+POST {{gun4_5_api_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "title": 123
+}
+
+### 5. Doğrulama Testi: Yanlış Alan Adı (baslik)
+POST {{gun4_5_api_HostAddress}}/api/todos
+Content-Type: application/json
+
+{
+  "baslik": "Süt al"
+}
